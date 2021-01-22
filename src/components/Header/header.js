@@ -1,13 +1,20 @@
 import React from 'react'
-import FontAwesome from 'react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import './header.css';
+import SideNav from './SideNav/sideNav';
 
-export default function Header() {
+export default function Header(props) {
 
     const navBars = () => (
         <div className="bars">
-            <FontAwesome name="bars" style={{color:'#dfdfdf', padding:'10px', cursor:'pointer'}}></FontAwesome>
+            <FontAwesomeIcon icon="bars" 
+                onClick={props.onShowNav}
+                style={{color:'#dfdfdf', 
+                    padding:'10px', 
+                    cursor:'pointer'
+                }}>
+            </FontAwesomeIcon>
         </div>
     )
     
@@ -23,6 +30,7 @@ export default function Header() {
 
     return (
         <div className="header">
+            <SideNav {...props}/>
             <div className="headerOpt">
                 {navBars()}
                 {logo()}
